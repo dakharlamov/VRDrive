@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRDrivingFramework\Scripts\Gamemodes\PersueAndDestroy.cs">
+    <Files>
+      <File FileName="Assets\Standard Assets\Vehicles\Car\Scripts\CarUserControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\WheelController.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\Gamemodes\PersueAndDestroy.cs" Line="11" Column="32" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\EditorWaypoint.cs" Line="9" Column="2" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\Waypoint.cs" Line="7" Column="40" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\WaypointStrategy.cs" Line="101" Column="2" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\HandState.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\Utilities.cs" Line="7" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

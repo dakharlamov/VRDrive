@@ -1,0 +1,141 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class WaypointStrategy : MonoBehaviour {
+
+	public abstract Waypoint pickNextWaypoint();
+
+}
+
+public class SequentialWaypointStrategy : WaypointStrategy{
+
+	private Queue<Waypoint> waypoints;
+	private bool looping;
+
+	public SequentialWaypointStrategy(ref GameObject gameMode, bool isLooping){
+
+		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
+
+		if(ways.GetLength() < 1){
+			Debug.LogError("No waypoints found as children of gamemode container.");
+			return;
+		}
+
+		waypoints = new Queue<Waypoint>(ways);
+		looping = isLooping;
+	}
+
+	public override Waypoint pickNextWaypoint ()
+	{
+
+		Waypoint holder = waypoints.Dequeue();
+
+		if(looping){
+
+			waypoints.Enqueue(holder);
+
+		}
+
+		return holder;
+
+	}
+		
+}
+
+
+public class RandomWaypointStrategy : WaypointStrategy{
+
+	private List<Waypoint> waypoints;
+	private bool halting;
+	private int length;
+	private Waypoint currentWaypoint;
+
+	public RandomWaypointStrategy(ref GameObject gameMode, bool doesHalt){
+
+		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
+
+		length = ways.GetLength(); 
+		if(length < 1){
+			Debug.LogError("No waypoints found as children of gamemode container.");
+			return;
+		}
+
+		waypoints = new List<Waypoint>(ways);
+		halting = doesHalt;
+
+	}
+
+	public override Waypoint pickNextWaypoint()
+	{
+		int idx = Random.Range(0, length - 1);
+		if(!currentWaypoint){
+			currentWaypoint = waypoints[idx];
+			if(halting){
+				waypoints.RemoveAt(idx);
+				length--;
+			}
+		}
+
+
+		if(!halting){
+
+			if(currentWaypoint == waypoints[idx]){
+				idx++;
+				currentWaypoint = waypoints[idx];
+			}
+		}else{
+
+			currentWaypoint = waypoints[idx];
+			waypoints.RemoveAt(idx);
+			length--;
+		}
+
+		return currentWaypoint;
+	}
+
+
+}
+//TODO: Implement looping
+public class ShortestStaticPathWaypointStrategy : WaypointStrategy{
+
+	private List<Waypoint> waypoints;
+	private bool looping;
+	private int length;
+
+	public ShortestStaticPathWaypointStrategy(ref GameObject gameMode, bool isLooping){
+
+		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
+
+		length = ways.GetLength(); 
+		if(length < 1){
+			Debug.LogError("No waypoints found as children of gamemode container.");
+			return;
+		}
+
+		waypoints = new List<Waypoint>(ways);
+		looping = isLooping;
+
+
+	}
+
+	public override Waypoint pickNextWaypoint (GameObject AI)
+	{
+		float sdist = float.MaxValue;
+		Waypoint cn;
+		foreach (Waypoint way in waypoints) {
+
+			float dist = Utilities.LB2V(AI.transform.position, way.getPosition());
+			if(sdist > dist){
+				sdist = dist;
+				cn = way;
+			}
+		}
+
+		waypoints.Remove(cn);
+
+		return cn;
+		
+	}
+
+}

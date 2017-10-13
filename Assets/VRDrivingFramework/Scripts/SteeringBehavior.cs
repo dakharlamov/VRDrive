@@ -22,6 +22,8 @@ public class SteeringBehavior : MonoBehaviour {
 	private Vector3 lastPosLeft;
 	private Vector3 lastPosRight;
 
+	private WheelController wheels;
+
 	// Use this for initialization
 	void Start () {
 		leftHandState = new HandState(HandState.HandID.left);
@@ -29,6 +31,9 @@ public class SteeringBehavior : MonoBehaviour {
 
 		initialRotation = steeringWheel.transform.localRotation;
 		lastPosLeft = lastPosRight = Vector3.zero;
+
+		wheels = this.GetComponent<WheelController>();
+
 	}
 	
 	// Update is called once per frame
@@ -124,8 +129,11 @@ public class SteeringBehavior : MonoBehaviour {
 		//90
 
 		Debug.Log(newRotation);
-		//Vector3 eu = new Vector3(initialRotation.eulerAngles.x, newRotation, initialRotation.eulerAngles.z);
-		steeringWheel.transform.localRotation = initialRotation * Quaternion.AngleAxis(newRotation, Vector3.up);//Quaternion.Euler(eu);
+		steeringWheel.transform.localRotation = initialRotation * Quaternion.AngleAxis(newRotation, Vector3.up);
+
+
+
+
 
 
 	}

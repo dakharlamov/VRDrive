@@ -29,5 +29,11 @@ public static class Utilities{
 		return prop;
 	}
 
+	public static float LB2V(Vector3 a, Vector3 b){
+
+		return Vector3.Magnitude(a - b);
+
+	}
+
 
 }
