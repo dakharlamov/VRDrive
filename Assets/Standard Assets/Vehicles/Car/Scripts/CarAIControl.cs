@@ -46,6 +46,8 @@ namespace UnityStandardAssets.Vehicles.Car
         private Rigidbody m_Rigidbody;
 
 
+		private bool reachedCheckpoint;
+
         private void Awake()
         {
             // get the car controller reference
@@ -53,7 +55,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             // give the random perlin a random value
             m_RandomPerlin = Random.value*100;
-
+			reachedCheckpoint = false;
             m_Rigidbody = GetComponent<Rigidbody>();
         }
 
@@ -171,9 +173,13 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_CarController.Move(steer, accel, accel, 0f);
 
                 // if appropriate, stop driving when we're close enough to the target.
-                if (m_StopWhenTargetReached && localTarget.magnitude < m_ReachTargetThreshold)
+                if (localTarget.magnitude < m_ReachTargetThreshold)
                 {
-                    m_Driving = false;
+
+					reachedCheckpoint = true;
+					if(m_StopWhenTargetReached){
+                    	m_Driving = false;
+					}
                 }
             }
         }
@@ -212,10 +218,21 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
 
+		public bool hasReachedCheckpoint(){
+			return reachedCheckpoint;
+		}
+
+		public void stopDriving(){
+
+			m_Driving = false;
+
+		}
+
         public void SetTarget(Transform target)
         {
             m_Target = target;
             m_Driving = true;
+			reachedCheckpoint = false;
         }
     }
 }

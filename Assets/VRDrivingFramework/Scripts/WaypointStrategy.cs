@@ -8,19 +8,14 @@ public abstract class WaypointStrategy : MonoBehaviour {
 
 }
 
+//TODO: Only one waypoint handler
+//		Empty queue handler for non loopers
 public class SequentialWaypointStrategy : WaypointStrategy{
 
 	private Queue<Waypoint> waypoints;
 	private bool looping;
 
-	public SequentialWaypointStrategy(ref GameObject gameMode, bool isLooping){
-
-		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
-
-		if(ways.GetLength() < 1){
-			Debug.LogError("No waypoints found as children of gamemode container.");
-			return;
-		}
+	public SequentialWaypointStrategy(ref Waypoint[] ways, bool isLooping){
 
 		waypoints = new Queue<Waypoint>(ways);
 		looping = isLooping;
@@ -51,15 +46,7 @@ public class RandomWaypointStrategy : WaypointStrategy{
 	private int length;
 	private Waypoint currentWaypoint;
 
-	public RandomWaypointStrategy(ref GameObject gameMode, bool doesHalt){
-
-		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
-
-		length = ways.GetLength(); 
-		if(length < 1){
-			Debug.LogError("No waypoints found as children of gamemode container.");
-			return;
-		}
+	public RandomWaypointStrategy(ref Waypoint[] ways, bool doesHalt){
 
 		waypoints = new List<Waypoint>(ways);
 		halting = doesHalt;
@@ -102,16 +89,11 @@ public class ShortestStaticPathWaypointStrategy : WaypointStrategy{
 	private List<Waypoint> waypoints;
 	private bool looping;
 	private int length;
+	private GameObject ai;
 
-	public ShortestStaticPathWaypointStrategy(ref GameObject gameMode, bool isLooping){
+	public ShortestStaticPathWaypointStrategy(ref Waypoint[] ways, GameObject AI, bool isLooping){
 
-		Waypoint[] ways = gameMode.GetComponentsInChildren<Waypoint>();
-
-		length = ways.GetLength(); 
-		if(length < 1){
-			Debug.LogError("No waypoints found as children of gamemode container.");
-			return;
-		}
+		ai = AI;
 
 		waypoints = new List<Waypoint>(ways);
 		looping = isLooping;
@@ -119,13 +101,13 @@ public class ShortestStaticPathWaypointStrategy : WaypointStrategy{
 
 	}
 
-	public override Waypoint pickNextWaypoint (GameObject AI)
+	public override Waypoint pickNextWaypoint ()
 	{
 		float sdist = float.MaxValue;
-		Waypoint cn;
+		Waypoint cn = new Waypoint();
 		foreach (Waypoint way in waypoints) {
 
-			float dist = Utilities.LB2V(AI.transform.position, way.getPosition());
+			float dist = Utilities.LB2V(ai.transform.position, way.getPosition());
 			if(sdist > dist){
 				sdist = dist;
 				cn = way;

@@ -237,9 +237,13 @@
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarSkinnedMeshRenderPBSComponent.cs" />
      <Compile Include="Assets\OvrAvatar\Scripts\OvrAvatarTouchController.cs" />
      <Compile Include="Assets\Temp\steeringbehaviour.cs" />
+     <Compile Include="Assets\VRDrivingFramework\Scripts\CarAIWaypoint.cs" />
+     <Compile Include="Assets\VRDrivingFramework\Scripts\CarExplosion.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\EditorWaypoint.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\Gamemodes\PersueAndDestroy.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\HandState.cs" />
+     <Compile Include="Assets\VRDrivingFramework\Scripts\InputController.cs" />
+     <Compile Include="Assets\VRDrivingFramework\Scripts\RightHandWeapon.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\Utilities.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\Waypoint.cs" />

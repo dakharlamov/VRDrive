@@ -12,6 +12,8 @@ public class HandState {
 	private HandID handTracked;
 	private GripState currentState;
 
+
+
 	//Momento both hands
 	public HandState(HandID hand){
 
@@ -40,8 +42,11 @@ public class HandState {
 				currentState = GripState.open;
 
 		}
-	
+
+
 	}
+
+
 
 	public GripState getGripState(){
 		return currentState;
@@ -50,15 +55,30 @@ public class HandState {
 
 	public bool checkIsHoldingWheel(ref GameObject hand, ref GameObject steeringWheelOrigin){
 
-		float rMax = 0.275f;
-		float rMin = 0.15f;
+		// radius of wheel is 0.5f
 
-		Debug.DrawLine(steeringWheelOrigin.transform.position, steeringWheelOrigin.transform.position + (steeringWheelOrigin.transform.forward * rMax), Color.red);
-		Debug.DrawLine(steeringWheelOrigin.transform.position, steeringWheelOrigin.transform.position + (steeringWheelOrigin.transform.forward * rMin), Color.blue);
+		float rMax = 0.6f;
+		float rMin = 0.3f;
+
+
 
 		if(currentState == GripState.closed){
 
-			float dist = Vector3.Magnitude(hand.transform.position - steeringWheelOrigin.transform.position);
+			Vector3 localHand = steeringWheelOrigin.transform.InverseTransformPoint(hand.transform.position);
+
+			Vector3 localSteer = steeringWheelOrigin.transform.localPosition;
+
+			if(Mathf.Abs(localHand.y - localSteer.y) > 2.0f)
+				return false;
+			
+			localHand.y = 0;
+			localSteer.y = 0;
+
+			float dist = Vector3.Magnitude(localHand - localSteer);
+
+			//GameObject.Find("DBA").GetComponent<TextMesh>().text = "" + dist;
+			//GameObject.Find("DBB").GetComponent<TextMesh>().text = localHand.ToString();
+			//GameObject.Find("DBC").GetComponent<TextMesh>().text = localSteer.ToString();
 
 			return rMin < dist ? dist < rMax : false;
 

@@ -10,6 +10,10 @@ public class WheelController : MonoBehaviour {
 
 	private float steeringIntesity;
 
+	private float acceleration;
+
+	private float braking;
+
 	// Use this for initialization
 	void Start () {
 
@@ -19,18 +23,24 @@ public class WheelController : MonoBehaviour {
 	//TODO: Implement Handbrake via lever in game
 	void FixedUpdate () {
 
-		float acceleration = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-
-		
-		float brake = -1 * OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
-		Debug.Log(brake);
-
-		carRef.Move(steeringIntesity, acceleration, brake, 0);
+		carRef.Move(steeringIntesity, acceleration, braking, 0);
 	}
 
 	public void updateSteering(float intensity){
 
 		steeringIntesity = intensity;
+
+	}
+
+	public void updateAcceleration(float intensity){
+
+		acceleration = intensity;
+
+	}
+
+	public void updateBraking(float intensity){
+
+		braking = intensity;
 
 	}
 
