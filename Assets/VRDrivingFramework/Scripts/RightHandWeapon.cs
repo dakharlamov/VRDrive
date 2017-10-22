@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Daniel Kharlamov
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,9 +37,24 @@ public class RightHandWeapon : MonoBehaviour {
 
 			float trigger = inputController.getRightTriggerSqueeze();
 
+			Debug.DrawRay(this.transform.position, -1.0f * this.transform.right);
+
 			if(trigger > 0.5f){
 				this.GetComponentInChildren<ParticleSystem>().Emit(1);
 
+				RaycastHit hit;
+
+				if(Physics.Raycast(this.transform.position, -1.0f * this.transform.right, out hit)){
+
+					//GameObject.Find("DBA").GetComponent<TextMesh>().text = hit.collider.tag;
+
+					if(hit.collider.tag == "enemyCar"){
+
+						hit.collider.gameObject.GetComponentInParent<CarAIWaypoint>().damageCar();
+
+					}
+
+				}
 
 				fireRateLock = true;
 

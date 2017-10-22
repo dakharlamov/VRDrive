@@ -22,6 +22,11 @@ public class SteeringBehavior : MonoBehaviour {
 
 	private WheelController wheels;
 
+	private Vector3 initUp;
+
+	private Quaternion lastRot;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -31,6 +36,11 @@ public class SteeringBehavior : MonoBehaviour {
 		lastPosLeft = lastPosRight = Vector3.zero;
 
 		wheels = this.GetComponent<WheelController>();
+
+		initUp = steeringWheel.transform.forward;
+
+		lastRot = initialRotation;
+
 
 	}
 
@@ -84,6 +94,7 @@ public class SteeringBehavior : MonoBehaviour {
 	void moveSteeringWheel(HandState.HandID hand){
 
 		float angleBetween = 0;
+		float direction = 1;
 		Vector3 steeringWheelOrigin = steeringWheel.transform.localPosition;
 
 		if(hand == HandState.HandID.right){
@@ -102,9 +113,9 @@ public class SteeringBehavior : MonoBehaviour {
 
 			Vector3 crossCheck = Vector3.Cross(previousVector, currentVector);
 
-			float direction = Vector3.Dot(Vector3.Normalize(crossCheck), Vector3.Normalize(steeringWheel.transform.up));
+			direction = Vector3.Dot(Vector3.Normalize(crossCheck), Vector3.Normalize(steeringWheel.transform.up));
 
-			angleBetween = Mathf.Sign(direction) * Mathf.Acos(Vector3.Dot(previousVector, currentVector)) * Mathf.Rad2Deg * Mathf.PI;
+			angleBetween = Mathf.Acos(Vector3.Dot(previousVector, currentVector)) * Mathf.Rad2Deg * Mathf.PI;
 
 			lastPosRight = deYed;
 		}
@@ -126,23 +137,33 @@ public class SteeringBehavior : MonoBehaviour {
 
 			Vector3 crossCheck = Vector3.Cross(previousVector, currentVector);
 
-			float direction = Vector3.Dot(Vector3.Normalize(crossCheck), Vector3.Normalize(steeringWheel.transform.up));
+			direction = Vector3.Dot(Vector3.Normalize(crossCheck), Vector3.Normalize(steeringWheel.transform.up));
 
-			angleBetween = Mathf.Sign(direction) * Mathf.Acos(Vector3.Dot(previousVector, currentVector)) * Mathf.Rad2Deg * Mathf.PI;
+			angleBetween = Mathf.Acos(Vector3.Dot(previousVector, currentVector)) * Mathf.Rad2Deg * Mathf.PI;
 
 			lastPosLeft = deYed;
 		}
 
 		float currentRotationY = steeringWheel.transform.localRotation.eulerAngles.y;
 		 
+		angleBetween *= Mathf.Sign(direction);
+
 		float newRotation = angleBetween + currentRotationY;
 
 
 
-		//260
-		//90
-		wheels.updateSteering(newRotation * Mathf.Deg2Rad);
 		steeringWheel.transform.localRotation = initialRotation * Quaternion.AngleAxis(newRotation, Vector3.up);
+
+		float steering = Mathf.Sign(steeringWheel.transform.forward.x) * (1.0f - Vector3.Dot(initUp, steeringWheel.transform.forward));
+
+		if(Mathf.Abs(steering) <= 1.0f){
+			wheels.updateSteering(steering);
+			lastRot = steeringWheel.transform.localRotation;
+		}else{
+			steeringWheel.transform.localRotation = lastRot;
+		}
+
+
 
 
 

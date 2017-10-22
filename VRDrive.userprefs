@@ -1,20 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRDrivingFramework\Scripts\HandState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Vehicles\Car\Scripts\CarUserControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\WheelController.cs" Line="19" Column="3" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\WheelController.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Utilities.cs" Line="1" Column="1" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs" Line="33" Column="49" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\EditorWaypoint.cs" Line="22" Column="4" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\EditorWaypoint.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Waypoint.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\CarAIWaypoint.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Gamemodes\PersueAndDestroy.cs" Line="1" Column="1" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\CarExplosion.cs" Line="1" Column="1" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\RightHandWeapon.cs" Line="24" Column="4" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\HandState.cs" Line="55" Column="2" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\InputController.cs" Line="45" Column="3" />
-      <File FileName="Assets\VRDrivingFramework\Scripts\WaypointStrategy.cs" Line="95" Column="3" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\RightHandWeapon.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\HandState.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\InputController.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\WaypointStrategy.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\LightBarBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" Line="47" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

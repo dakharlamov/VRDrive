@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Daniel Kharlamov
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ public class CarAIWaypoint : MonoBehaviour {
 	private WaypointStrategy travelStrategy;
 
 	private UnityStandardAssets.Vehicles.Car.CarAIControl controls;
+
 
 	private int hitPoints;
 
@@ -43,12 +46,31 @@ public class CarAIWaypoint : MonoBehaviour {
 
 	//This is only for decoupled use!
 	void Update(){
+		
 		if(isDead && isDecoupled){
 			//TODO: explode and destroy
-
+	
 			destroyThisAI();
 		}
+
+		playExp();
 	}
+
+	private bool animStarted = false;
+	private void playExp(){
+		if(isDead && !animStarted){
+
+			animStarted = true;
+
+			foreach(ParticleSystem parts in gameObject.GetComponentsInChildren<ParticleSystem>()){
+
+				parts.Play();
+
+			}
+
+		}
+	}
+
 
 	public bool currentlyDead(){
 		return isDead;
@@ -67,7 +89,7 @@ public class CarAIWaypoint : MonoBehaviour {
 	}
 
 	private void destroyThisAI(){
-		Destroy(this.gameObject);
+		Destroy(this.gameObject, 3.0f);
 	}
 
 }

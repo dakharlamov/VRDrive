@@ -32,15 +32,16 @@ public class PersueAndDestroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		foreach(CarAIWaypoint car in carList){
-			car.UpdateAI();
-
-			if(car.currentlyDead()){
-				carList.Remove(car);
-				car.verifyDecoupling();
+		if(carList.Count > 0){
+			foreach(CarAIWaypoint car in carList){
+				car.UpdateAI();
+				
+				if(car.currentlyDead()){
+					carList.Remove(car);
+					car.verifyDecoupling();
+				}
+				
 			}
-
 		}
 
 	}
