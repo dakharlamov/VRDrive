@@ -30,7 +30,12 @@ public class InputController : MonoBehaviour {
 		A_buttonToggle = false;
 		A_buttonLocked = false;
 	}
-	
+
+	void FixedUpdate(){
+		leftHandState.updateState();
+		rightHandState.updateState();
+	}
+
 	// Update is called once per frame
 	void Update () {
 	

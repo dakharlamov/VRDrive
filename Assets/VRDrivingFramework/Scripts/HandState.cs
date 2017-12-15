@@ -57,16 +57,16 @@ public class HandState {
 
 		// radius of wheel is 0.5f
 
-		float rMax = 0.6f;
+		float rMax = 0.7f;
 		float rMin = 0.3f;
 
-
+		//this is slightly wrong, y needs to be eliminated from steering homogenous space
 
 		if(currentState == GripState.closed){
 
-			Vector3 localHand = steeringWheelOrigin.transform.InverseTransformPoint(hand.transform.position);
+			Vector3 localHand = hand.transform.position;
 
-			Vector3 localSteer = steeringWheelOrigin.transform.localPosition;
+			Vector3 localSteer = steeringWheelOrigin.transform.position;
 
 			if(Mathf.Abs(localHand.y - localSteer.y) > 2.0f)
 				return false;
@@ -76,11 +76,7 @@ public class HandState {
 
 			float dist = Vector3.Magnitude(localHand - localSteer);
 
-			//GameObject.Find("DBA").GetComponent<TextMesh>().text = "" + dist;
-			//GameObject.Find("DBB").GetComponent<TextMesh>().text = localHand.ToString();
-			//GameObject.Find("DBC").GetComponent<TextMesh>().text = localSteer.ToString();
-
-			return rMin < dist ? dist < rMax : false;
+			return dist < rMax;
 
 		}
 		return false;

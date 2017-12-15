@@ -58,6 +58,7 @@
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+     <Compile Include="Assets\HiResScreenShots.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\AchievementType.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\AndroidPlatform.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\BufferedAudioStream.cs" />
@@ -287,7 +288,9 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
-     <Compile Include="Assets\Temp\steeringbehaviour.cs" />
+     <Compile Include="Assets\Sport Car - 3D model\Scripts\CameraScript.cs" />
+     <Compile Include="Assets\Sport Car - 3D model\Scripts\LightEffects.cs" />
+     <Compile Include="Assets\Temp\EditorGraph.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\Bomb.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\CarAIChase.cs" />
      <Compile Include="Assets\VRDrivingFramework\Scripts\CarAIWaypoint.cs" />
