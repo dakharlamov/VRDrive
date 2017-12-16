@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/pic.unity
+- path: Assets/race.unity
   isLoaded: 1
   isActive: 1

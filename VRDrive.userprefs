@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRDrivingFramework\Scripts\HandState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs">
     <Files>
-      <File FileName="Assets\VRDrivingFramework\Scripts\HandState.cs" Line="55" Column="2" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\HandState.cs" Line="87" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\SteeringBehavior.cs" Line="128" Column="4" />
       <File FileName="Assets\VRDrivingFramework\Scripts\WheelController.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Utilities.cs" Line="1" Column="1" />
@@ -14,17 +14,18 @@
       <File FileName="Assets\VRDrivingFramework\Scripts\InputController.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\WaypointStrategy.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\LightBarBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Gamemodes\CollectEmAllGamemode.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\CollectableEffects.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Collectable.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\Bomb.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\HealthPickup.cs" Line="1" Column="1" />
       <File FileName="Assets\VRDrivingFramework\Scripts\PointPickup.cs" Line="1" Column="1" />
-      <File FileName="Assets\OvrAvatar\Scripts\OvrAvatarHand.cs" Line="1" Column="1" />
-      <File FileName="Assets\OvrAvatar\Scripts\OvrAvatarMeshInstance.cs" Line="1" Column="1" />
-      <File FileName="Assets\HiResScreenShots.cs" Line="1" Column="1" />
-      <File FileName="Assets\Temp\EditorGraph.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\Gamemodes\CheckpointRace.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\Gamemodes\PoliceChase.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\CarAIChase.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\ChaseStrategy.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\PlayerTargets.cs" Line="1" Column="1" />
+      <File FileName="Assets\VRDrivingFramework\Scripts\RaceCheckpoint.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
